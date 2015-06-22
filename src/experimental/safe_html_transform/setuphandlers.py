@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+# import logging
 from zope.component import getUtility
 from Products.PortalTransforms.interfaces import IPortalTransformsTool
+# from Products.CMFCore.utils import getToolByName
 
 
 def isNotCurrentProfile(context):
