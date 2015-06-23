@@ -45,5 +45,4 @@ def updateSafeHtml(out, portal):
 
 def installPortalTransforms(portal):
     out = StringIO()
-
     updateSafeHtml(out, portal)
