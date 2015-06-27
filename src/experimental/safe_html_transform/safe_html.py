@@ -2500,8 +2500,8 @@ class SafeHTML:
 
     implements(ITransform)
 
-    __name__ = "safe_html"
-    inputs = ('text/html', )
+    __name__ = "experimental_safe_html"
+    inputs = ('text/html',)
     output = "text/x-html-safe"
 
     def __init__(self, name=None, **kwargs):
@@ -2519,7 +2519,7 @@ class SafeHTML:
             'class_blacklist': [],
             'remove_javascript': 1,
             'disable_transform': 0,
-            }
+        }
 
         self.config_metadata = {
             'inputs': ('list',
@@ -2587,8 +2587,8 @@ class SafeHTML:
     def convert(self, orig, data, **kwargs):
         # note if we need an upgrade.
         if 'disable_transform' not in self.config:
-            log(logging.ERROR, 'PortalTransforms safe_html transform needs '
-                'to be updated. Please re-install the PortalTransforms '
+            log(logging.ERROR, 'ExperimentalSafeHtmlTransforms safe_html transform needs '
+                'to be updated. Please re-install the ExperimentalSafeHtmlTransforms '
                 'product to fix.')
 
         # if we have a config that we don't want to delete
@@ -2623,7 +2623,7 @@ class SafeHTML:
             safe_html2 = safe_html2.replace("div", "p")
             data.setData(safe_html2)
 
-        return data._data
+        return data
 
 
 def register():
