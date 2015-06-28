@@ -2500,7 +2500,7 @@ class SafeHTML:
 
     implements(ITransform)
 
-    __name__ = "experimental_safe_html"
+    __name__ = "safe_html"
     inputs = ('text/html',)
     output = "text/x-html-safe"
 
