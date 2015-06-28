@@ -37,7 +37,5 @@ def installTransform(context, logger=None):
         if transforms in pt:
             pt.unregisterTransform(transforms)
             logger.info('Unregistered %s' % transforms)
-            import pdb
-            pdb.set_trace()
             pt.manage_addTransform(transforms, 'experimenatal.safe_html_transform.%s' % transforms)
             logger.info('Regstered %s' % transforms)
