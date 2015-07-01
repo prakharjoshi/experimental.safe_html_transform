@@ -44,5 +44,6 @@ def installNewTransform(context, logger=None):
         logger = logging.getLogger('experimental.safe_html_transform')
     transforms = getToolByName(context, 'portal_transforms')
     for tform in availableTransforms():
+        # register new transform
         transforms.manage_addTransform(tform, 'experimental.safe_html_transform.transforms.%s' % tform)
         logger.info('Registered %s' % tform)
