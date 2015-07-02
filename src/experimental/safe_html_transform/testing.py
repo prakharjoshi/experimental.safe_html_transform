@@ -9,10 +9,7 @@ from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 from zope.configuration import xmlconfig
-from Products.CMFPlone.log import logger
 import experimental.safe_html_transform
-import sys
-import logging
 
 
 class ExperimentalSafeHtmlTransformLayer(PloneSandboxLayer):
@@ -25,8 +22,6 @@ class ExperimentalSafeHtmlTransformLayer(PloneSandboxLayer):
             experimental.safe_html_transform,
             context=configurationContext
         )
-        logger.root.setLevel(logging.DEBUG)
-        logger.root.addHandler(logging.StreamHandler(sys.stdout))
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'experimental.safe_html_transform:default')
