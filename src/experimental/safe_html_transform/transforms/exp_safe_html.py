@@ -312,7 +312,7 @@ class SafeHTML:
             safe_html2 = safe_html2.replace("div", "p")
             data.setData(safe_html2)
 
-        return data._data
+        return data
 
 
 def register():
