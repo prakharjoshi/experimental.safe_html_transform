@@ -305,6 +305,7 @@ class SafeHTML:
                 # replace the html node
                 p = re.compile(r'<.?html?.>')
                 safe_html2 = p.sub('', safe_html2)
+            # replace unwanted tags
             safe_html2 = safe_html2.replace("h3", "p")
             safe_html2 = safe_html2.replace("h4", "p")
             safe_html2 = safe_html2.replace("h5", "p")
