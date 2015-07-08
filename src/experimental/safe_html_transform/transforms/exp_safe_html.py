@@ -294,17 +294,20 @@ class SafeHTML:
             # append html tag to create a dummy parent for the tree
             html = "<html>%s</html>" % orig
             NASTY_TAGS = frozenset(['style', 'script', 'object', 'applet', 'meta', 'embed'])  # noqa
-            cleaner = HTMLParser(kill_tags=NASTY_TAGS, page_structure=False, safe_attrs_only=False)
-            safe_html = fragment_fromstring(cleaner.clean_html(html))
-            safe_html2 = ""
-            for i in range(len(safe_html)):
-                safe_html1 = tostring(safe_html[i])
-                safe_html2 = safe_html2 + safe_html1
+            cleaner = HTMLParser(kill_tags=NASTY_TAGS, page_structure=False,
+                                 safe_attrs_only=False, links=True)
+            safe_html2 = cleaner.clean_html(html)
+            # safe_html2 = ""
+            # for i in range(len(safe_html)):
+            #     safe_html1 = tostring(safe_html[i])
+            #     safe_html2 = safe_html2 + safe_html1
 
             if safe_html2:
                 # replace the html node
                 p = re.compile(r'<.?html?.>')
                 safe_html2 = p.sub('', safe_html2)
+                q = re.compile(r'<.?body?.>')
+                safe_html2 = q.sub('', safe_html2)
             # replace unwanted tags
             safe_html2 = safe_html2.replace("h3", "p")
             safe_html2 = safe_html2.replace("h4", "p")
